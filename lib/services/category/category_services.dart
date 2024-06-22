@@ -14,14 +14,14 @@ class CategoryServicesImp extends CategoryServices {
   @override
   Future<void> createCategory({required Category category}) async {
     response = await dio.post("$baseUrl/category", data: category.toJson());
-    Category c = Category.fromMap(response.data["data"]);
+    Category c = Category.fromMap(response.data);
     print(c);
   }
 
   @override
   Future<void> deleteCategory({required num categoryId}) async {
     response = await dio.delete("$baseUrl/category/$categoryId");
-    Category c = Category.fromMap(response.data["data"]);
+    Category c = Category.fromMap(response.data);
 
     print(c);
   }
@@ -36,7 +36,7 @@ class CategoryServicesImp extends CategoryServices {
   @override
   Future<void> getCategoryById({required num categoryId}) async {
     response = await dio.get("$baseUrl/category/$categoryId");
-    Category c = Category.fromMap(response.data["data"]);
+    Category c = Category.fromMap(response.data);
 
     print(c);
   }
@@ -47,7 +47,7 @@ class CategoryServicesImp extends CategoryServices {
       "$baseUrl/category/${category.id}",
       data: category.toJson(),
     );
-    Category c = Category.fromMap(response.data["data"]);
+    Category c = Category.fromMap(response.data);
 
     print(c);
   }
