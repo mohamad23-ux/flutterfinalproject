@@ -56,6 +56,8 @@ class _deliveryViewState extends State<deliveryView> {
                   children: [
                     DeliveryCard("اصاله نصري  ", "0991501274", "الجسر الأبيض ",
                         "مسكليت", context),
+                    DeliveryCard("الهضبة عمرو دياب  ", "0995864567",
+                        "الاسكندرية ", "ميتور", context),
                   ],
                 ),
               );

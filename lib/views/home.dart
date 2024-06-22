@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mym/maincolor.dart';
-import 'package:mym/views/login_View.dart';
+import 'package:mym/views/auth/login_View.dart';
 
-class home extends StatefulWidget {
-  home({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
   Widget pagedots() {
     return Builder(builder: (context) {
       return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -18,7 +17,7 @@ class _homeState extends State<home> {
           Container(
             width: i == pagenumber ? 25 : 15,
             height: 15,
-            margin: i == pagenumber ? EdgeInsets.all(8) : EdgeInsets.all(2),
+            margin: i == pagenumber ? const EdgeInsets.all(8) : const EdgeInsets.all(2),
             decoration: BoxDecoration(
               color: i == pagenumber
                   ? Colors.white
@@ -49,18 +48,18 @@ class _homeState extends State<home> {
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => login()),
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.all(12),
+                    margin: const EdgeInsets.all(12),
                     width: double.infinity,
                     color: maincolor,
-                    child: Text(
+                    child: const Text(
                       'تخطي',
                       textAlign: TextAlign.end,
                       style: TextStyle(
-                          color: const Color.fromARGB(255, 255, 255, 255),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'main'),
                     ),
                   ),
@@ -86,9 +85,9 @@ class _homeState extends State<home> {
                             Container(
                                 width: 400,
                                 height: 360,
-                                margin: EdgeInsets.only(bottom: 6),
+                                margin: const EdgeInsets.only(bottom: 6),
                                 child: Image.asset('asset/images/splash1.png')),
-                            Text(
+                            const Text(
                               'تطبيق لإدارة مصاريف\n محلك التجاري   ....',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -104,15 +103,15 @@ class _homeState extends State<home> {
                         ),
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 50,
                             ),
                             Container(
                                 width: 400,
-                                margin: EdgeInsets.only(bottom: 6),
+                                margin: const EdgeInsets.only(bottom: 6),
                                 height: 300,
                                 child: Image.asset('asset/images/splash4.png')),
-                            Text(
+                            const Text(
                               'راقب ونظم تجارتك بسهولة',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -131,9 +130,9 @@ class _homeState extends State<home> {
                             Container(
                                 width: 400,
                                 height: 320,
-                                margin: EdgeInsets.only(bottom: 19),
+                                margin: const EdgeInsets.only(bottom: 19),
                                 child: Image.asset('asset/images/splash3.png')),
-                            Text(
+                            const Text(
                               'تطبيق لإدارة أموالك باحترافية  \nالشخصية....',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -141,7 +140,7 @@ class _homeState extends State<home> {
                                   fontSize: 30,
                                   fontFamily: 'main'),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 9,
                             ),
                             InkWell(
@@ -149,17 +148,18 @@ class _homeState extends State<home> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => login()),
+                                      // ignore: prefer_const_constructors
+                                      builder: (context) => LoginPage()),
                                 );
                               },
                               child: Container(
                                 width: 250,
                                 height: 55,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(56, 31, 154, 1),
+                                  color: const Color.fromRGBO(56, 31, 154, 1),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'لنبدأ ',
                                     textAlign: TextAlign.center,

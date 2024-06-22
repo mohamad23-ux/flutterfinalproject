@@ -114,7 +114,7 @@ class _CustomerInformationState extends State<CustomerInformation> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "yahya",
+                                      customerName,
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 20),
                                     ),
@@ -170,7 +170,7 @@ class _CustomerInformationState extends State<CustomerInformation> {
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide(color: maincolor)),
-                    labelText: 'برأيي هون يصير غير شي  متل فلترة او شي   ',
+                    labelText: 'البحث عن فاتورة   ',
                     labelStyle: TextStyle(
                       fontFamily: 'main',
                     ),

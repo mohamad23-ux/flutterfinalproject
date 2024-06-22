@@ -39,6 +39,7 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    aaptOptions { cruncherEnabled = false }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -65,3 +66,4 @@ flutter {
 }
 
 dependencies {}
+ 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mym/maincolor.dart';
-import 'package:mym/views/main_View.dart';
+import 'package:mym/views/mainWidgets/main_View.dart';
 import 'package:mym/views/processingItems/CustomerInformation.dart';
 import 'package:mym/views/processingItems/deliveryInformation.dart';
 import 'package:mym/views/processingItems/providerInforamtion.dart';
@@ -42,6 +42,7 @@ TextEditingController Details = TextEditingController();
 bool isDoubleTap = false;
 List<Map<String, dynamic>> foundSanad = [];
 List<Map<String, dynamic>> providers = [];
+
 Widget inforamtionCard(String voucherKind, int money, String subject) {
   return Container(
     padding: const EdgeInsets.all(12),
@@ -70,7 +71,7 @@ Widget inforamtionCard(String voucherKind, int money, String subject) {
                     width: 10,
                   ),
                   Text(
-                    dayName,
+                    now.day.toString(),
                     style: const TextStyle(
                         color: Colors.white, fontSize: 20, fontFamily: 'main'),
                   ),
@@ -110,7 +111,7 @@ Widget inforamtionCard(String voucherKind, int money, String subject) {
 ///
 /////////////////////////////////////////
 String providerName = "اســم المورد";
-var providerCompany = "حر";
+var providerCompany = "عام";
 Widget providerCard(String providerName, String providerPhone, String Company,
     String providerDetails, BuildContext context) {
   providerName = providerName;
@@ -126,17 +127,22 @@ Widget providerCard(String providerName, String providerPhone, String Company,
       // ScaffoldMessenger.of(context);
     },
     background: Container(
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.only(right: 12, left: 12),
       color: Colors.red,
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
       child: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Center(
               child: Container(
-                margin: EdgeInsets.all(4),
-                child: Icon(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
                   Icons.delete,
                   color: Colors.white,
                   size: 40,
@@ -145,8 +151,8 @@ Widget providerCard(String providerName, String providerPhone, String Company,
             ),
             Center(
               child: Container(
-                  margin: EdgeInsets.all(4),
-                  child: Text(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
                     "حـذف",
                     style: TextStyle(color: Colors.white),
                   )),
@@ -154,44 +160,47 @@ Widget providerCard(String providerName, String providerPhone, String Company,
           ],
         ),
       ),
-      padding: EdgeInsets.only(right: 20),
-      alignment: Alignment.centerLeft,
     ),
     secondaryBackground: Container(
-      margin: EdgeInsets.all(12),
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.only(right: 12, left: 12),
       color: Colors.red,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 40,
-          ),
-          Center(
-            child: Container(
-              margin: EdgeInsets.all(4),
-              child: Icon(
-                Icons.delete,
-                color: Colors.white,
-                size: 40,
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 40,
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-                margin: EdgeInsets.all(4),
-                child: Text(
-                  "حـذف",
-                  style: TextStyle(color: Colors.white),
-                )),
-          )
-        ],
+            Center(
+              child: Container(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
+                    "حـذف",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            )
+          ],
+        ),
       ),
-      padding: EdgeInsets.only(right: 20),
-      alignment: Alignment.centerRight,
     ),
     child: Container(
+      width: MediaQuery.of(context).size.width * 0.95,
+      margin: const EdgeInsets.only(top: 12),
       height: 120,
-      padding: const EdgeInsets.all(12),
-      margin: const EdgeInsets.only(left: 6, right: 6, bottom: 22),
+      padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
           color: maincolor, borderRadius: BorderRadius.circular(12)),
       child: Row(
@@ -202,7 +211,7 @@ Widget providerCard(String providerName, String providerPhone, String Company,
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ProviderInformation()));
+                      builder: (context) => const CustomerInformation()));
             },
             ///////////////
             ///
@@ -235,7 +244,7 @@ Widget providerCard(String providerName, String providerPhone, String Company,
           ),
           Center(
             child: SizedBox(
-              width: 320,
+              width: 210,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -267,9 +276,9 @@ Widget providerCard(String providerName, String providerPhone, String Company,
                           Container(
                             margin: const EdgeInsets.only(left: 12),
                             child: Text(
-                              Company,
+                              providerDetails,
                               style: const TextStyle(
-                                  color: Colors.white, fontSize: 15),
+                                  color: Colors.white, fontSize: 12),
                             ),
                           )
                         ],
@@ -287,7 +296,7 @@ Widget providerCard(String providerName, String providerPhone, String Company,
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12)),
                           child: Text(
-                            providerDetails,
+                            providerCompany,
                             style: TextStyle(color: maincolor, fontSize: 20),
                           ),
                         ))
@@ -304,9 +313,10 @@ Widget providerCard(String providerName, String providerPhone, String Company,
   );
 }
 
+String customerName = "";
 Widget CustomerCard(String CustomerName, String CustomerPhone,
     String CustomerAddress, String CustomerDetails, BuildContext context) {
-  providerName = providerName;
+  customerName = CustomerName;
 
   return Dismissible(
     key: UniqueKey(),
@@ -320,18 +330,22 @@ Widget CustomerCard(String CustomerName, String CustomerPhone,
       // ScaffoldMessenger.of(context);
     },
     background: Container(
-      margin: EdgeInsets.only(right: 12, left: 12),
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.only(right: 12, left: 12),
       color: Colors.red,
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
       child: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Center(
               child: Container(
-                margin: EdgeInsets.all(4),
-                child: Icon(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
                   Icons.delete,
                   color: Colors.white,
                   size: 40,
@@ -340,8 +354,8 @@ Widget CustomerCard(String CustomerName, String CustomerPhone,
             ),
             Center(
               child: Container(
-                  margin: EdgeInsets.all(4),
-                  child: Text(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
                     "حـذف",
                     style: TextStyle(color: Colors.white),
                   )),
@@ -349,43 +363,45 @@ Widget CustomerCard(String CustomerName, String CustomerPhone,
           ],
         ),
       ),
-      padding: EdgeInsets.only(right: 20),
-      alignment: Alignment.centerLeft,
     ),
     secondaryBackground: Container(
-      margin: EdgeInsets.all(12),
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.only(right: 12, left: 12),
       color: Colors.red,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 40,
-          ),
-          Center(
-            child: Container(
-              margin: EdgeInsets.all(4),
-              child: Icon(
-                Icons.delete,
-                color: Colors.white,
-                size: 40,
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 40,
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-                margin: EdgeInsets.all(4),
-                child: Text(
-                  "حـذف",
-                  style: TextStyle(color: Colors.white),
-                )),
-          )
-        ],
+            Center(
+              child: Container(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
+                    "حـذف",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            )
+          ],
+        ),
       ),
-      padding: EdgeInsets.only(right: 20),
-      alignment: Alignment.centerRight,
     ),
     child: Container(
       width: MediaQuery.of(context).size.width * 0.95,
-      margin: EdgeInsets.only(top: 12),
+      margin: const EdgeInsets.only(top: 12),
       height: 120,
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
@@ -477,16 +493,15 @@ Widget CustomerCard(String CustomerName, String CustomerPhone,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                            child: Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Text(
-                            CustomerDetails!,
-                            style: TextStyle(color: maincolor, fontSize: 20),
-                          ),
-                        ))
+                                                  padding: const EdgeInsets.all(4),
+                                                  decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                                                  child: Text(
+                        CustomerDetails!,
+                        style: TextStyle(color: maincolor, fontSize: 20),
+                                                  ),
+                                                )
                       ],
                     ),
                   )
@@ -518,7 +533,8 @@ Widget CustomerCard(String CustomerName, String CustomerPhone,
 String deliveryName = "هنا اسم الديلفري";
 Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
     String DeliveryAddress, String DeliveryDetails, BuildContext context) {
-  DeliveryName = DeliveryName;
+  deliveryName = DeliveryName;
+
   return Dismissible(
     key: UniqueKey(),
     onDismissed: (direction) {
@@ -530,74 +546,84 @@ Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
 
       // ScaffoldMessenger.of(context);
     },
-    background: Center(
-      child: Container(
-        height: 10,
+    background: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
         color: Colors.red,
-        child: Center(
-          child: Column(
-            children: [
-              Center(
-                child: Container(
-                  margin: EdgeInsets.all(4),
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                    size: 40,
-                  ),
+      ),
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height * 0.80,
+      margin: const EdgeInsets.only(right: 12, left: 12),
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 40,
                 ),
               ),
-              Center(
-                child: Container(
-                    margin: EdgeInsets.all(4),
-                    child: Text(
-                      "حـذف",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              )
-            ],
-          ),
+            ),
+            Center(
+              child: Container(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
+                    "حـذف",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            )
+          ],
         ),
-        padding: EdgeInsets.only(right: 20),
-        alignment: Alignment.centerLeft,
       ),
     ),
-    secondaryBackground: Center(
-      child: Container(
-        height: 10,
-        color: Colors.red,
-        child: Center(
-          child: Column(
-            children: [
-              Center(
-                child: Container(
-                  margin: EdgeInsets.all(4),
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                    size: 40,
-                  ),
+    secondaryBackground: Container(
+      width: MediaQuery.of(context).size.width * 0.12,
+      height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.only(right: 12, left: 12),
+      color: Colors.red,
+      padding: const EdgeInsets.only(right: 20),
+      alignment: Alignment.centerLeft,
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.all(2),
+                child: const Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 40,
                 ),
               ),
-              Center(
-                child: Container(
-                    margin: EdgeInsets.all(4),
-                    child: Text(
-                      "حـذف",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              )
-            ],
-          ),
+            ),
+            Center(
+              child: Container(
+                  margin: const EdgeInsets.all(4),
+                  child: const Text(
+                    "حـذف",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            )
+          ],
         ),
-        padding: EdgeInsets.only(right: 20),
-        alignment: Alignment.centerLeft,
       ),
     ),
     child: Container(
+      width: MediaQuery.of(context).size.width * 0.95,
+      margin: const EdgeInsets.only(top: 12),
       height: 120,
-      padding: const EdgeInsets.all(12),
-      margin: const EdgeInsets.only(left: 6, right: 6, bottom: 22),
+      padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
           color: maincolor, borderRadius: BorderRadius.circular(12)),
       child: Row(
@@ -641,7 +667,7 @@ Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
           ),
           Center(
             child: SizedBox(
-              width: 320,
+              width: 210,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -661,16 +687,13 @@ Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              DeliveryPhone,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 15),
-                            )
-                          ]),
+                      Column(children: [
+                        Text(
+                          DeliveryPhone,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 15),
+                        )
+                      ]),
                       Column(
                         children: [
                           Container(
@@ -678,7 +701,7 @@ Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
                             child: Text(
                               DeliveryAddress,
                               style: const TextStyle(
-                                  color: Colors.white, fontSize: 15),
+                                  color: Colors.white, fontSize: 16),
                             ),
                           )
                         ],
@@ -696,7 +719,7 @@ Widget DeliveryCard(String DeliveryName, String DeliveryPhone,
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12)),
                           child: Text(
-                            DeliveryDetails!,
+                            DeliveryDetails,
                             style: TextStyle(color: maincolor, fontSize: 20),
                           ),
                         ))
@@ -717,18 +740,18 @@ Widget KindCard(String title) {
   return Container(
     height: 60,
     width: 60,
-    margin: EdgeInsets.all(8),
+    margin: const EdgeInsets.all(8),
     decoration: BoxDecoration(
       color: maincolor,
       borderRadius: BorderRadius.circular(10), // Set the desired radius value
     ),
     child: Container(
-      margin: EdgeInsets.all(4),
+      margin: const EdgeInsets.all(4),
       alignment: Alignment.center,
       child: Text(
         textAlign: TextAlign.center,
         title,
-        style: TextStyle(color: Colors.white, fontSize: 21),
+        style: const TextStyle(color: Colors.white, fontSize: 21),
       ),
     ),
   );

@@ -132,7 +132,7 @@ Widget allCustomersBar(BuildContext context) {
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.55,
+                                                  0.65,
                                               child: Column(
                                                 children: [
                                                   Container(

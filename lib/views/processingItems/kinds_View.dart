@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mym/maincolor.dart';
 import 'package:mym/views/consts.dart';
-import 'package:mym/views/sales_View.dart';
-import 'package:mym/views/warehouse_View.dart';
+import 'package:mym/views/mainWidgets/sales_View.dart';
+import 'package:mym/views/mainWidgets/warehouse_View.dart';
 
 class KindsView extends StatefulWidget {
   const KindsView({super.key});

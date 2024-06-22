@@ -92,7 +92,7 @@ class _ProvidersViewState extends State<ProvidersView> {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height *
-                                                    0.55,
+                                                    0.65,
                                                 child: Column(
                                                   children: [
                                                     Container(

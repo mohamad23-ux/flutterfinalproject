@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:mym/maincolor.dart';
 import 'package:mym/views/home.dart';
 
-class splashScreen extends StatefulWidget {
-  const splashScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<splashScreen> createState() => _splashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _splashScreenState extends State<splashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => home()),
+        MaterialPageRoute(builder: (context) => const Home()),
       );
     });
     super.initState();
@@ -36,7 +36,10 @@ class _splashScreenState extends State<splashScreen> {
           child: Container(
             width: 200,
             height: 200,
-            color: maincolor,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.white,
+            ),
             child: Image.asset('asset/images/logo.png'),
           ),
         ),

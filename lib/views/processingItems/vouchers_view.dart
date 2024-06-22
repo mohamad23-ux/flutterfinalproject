@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mym/maincolor.dart';
 import 'package:mym/views/consts.dart';
-import 'package:mym/views/main_View.dart';
-import 'package:mym/views/paymentvoucher_View.dart';
-import 'package:mym/views/sales_View.dart';
+import 'package:mym/views/mainWidgets/main_View.dart';
+import 'package:mym/views/mainWidgets/paymentvoucher_View.dart';
+import 'package:mym/views/mainWidgets/sales_View.dart';
 
 enum Action { delete } //to delete card with swip in Function
 
